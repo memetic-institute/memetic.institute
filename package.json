@@ -165,7 +165,8 @@
     "prettier": {
         "printWidth": 80,
         "tabWidth": 4,
-        "singleQuote": true
+        "singleQuote": true,
+        "trailingComma": "none"
     },
     "husky": {
         "hooks": {
@@ -182,6 +183,10 @@
         ]
     },
     "dependencies": {
+        "@fortawesome/fontawesome-svg-core": "^1.2.28",
+        "@fortawesome/free-brands-svg-icons": "^5.13.0",
+        "@fortawesome/free-solid-svg-icons": "^5.13.0",
+        "@fortawesome/react-fontawesome": "^0.1.9",
         "focus-visible": "^5.0.2",
         "imagemin-mozjpeg": "^8.0.0",
         "imagemin-optipng": "^7.1.0",
@@ -197,6 +202,7 @@
         "react": "16.13.1",
         "react-collapse": "^5.0.1",
         "react-dom": "16.13.1",
+        "react-ga": "^2.7.0",
         "react-player": "^1.15.2",
         "styled-components": "^5.0.1",
         "typeface-d-din": "^0.0.67"

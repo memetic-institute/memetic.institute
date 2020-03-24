@@ -1,5 +1,7 @@
-import { node } from 'prop-types';
+import { shape } from 'prop-types';
 import styled from 'styled-components';
+import { faTwitter, faGithub } from '@fortawesome/free-brands-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const Container = styled.footer`
     width: 100%;
@@ -14,34 +16,25 @@ const Container = styled.footer`
     align-items: center;
     z-index: 3;
 
-    /* @media only screen and (max-width: 1000px) {
-        height: 150px;
-    } */
+    @media only screen and (max-width: 800px) {
+        height: 100px;
+    }
 `;
 
 const List = styled.ul`
+    width: 100%;
     list-style: none;
     margin: 0;
     padding: 0;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
 
-    @media only screen and (max-width: 1000px) {
+    @media only screen and (max-width: 800px) {
+        justify-content: center;
         flex-direction: column;
     }
 `;
-
-// const StyledDot = styled.span`
-//     user-select: none;
-//     pointer-events: none;
-
-//     @media only screen and (max-width: 1000px) {
-//         display: none;
-//     }
-// `;
-
-// const Dot = () => <StyledDot>&middot;</StyledDot>;
 
 const Item = styled.li`
     display: inline-block;
@@ -55,26 +48,46 @@ const Item = styled.li`
 
 const Link = styled.a`
     color: #000;
-    font-weight: bold;
-    margin: 0 0.25em;
+    font-size: 1.5em;
+    margin-left: 1em;
+
+    @media only screen and (max-width: 800px) {
+        margin: 0 1em;
+    }
 `;
 
-const ExternalLink = ({ children, ...props }) => (
+const ExternalLink = ({ icon, ...props }) => (
     <Link target="_blank" rel="noopener noreferrer" {...props}>
-        {children}
+        <FontAwesomeIcon icon={icon} fixedWidth />
     </Link>
 );
 
 ExternalLink.propTypes = {
-    children: node.isRequired
+    icon: shape({}).isRequired
 };
 
-const Footer = props => (
+const TwitterLink = styled(ExternalLink)`
+    color: #1da1f2;
+`;
+
+const Footer = (props) => (
     <Container {...props}>
         <List>
             <Item>
                 &copy; {new Date().getFullYear()} Institute for Memetic Research
                 & Development
+            </Item>
+            <Item>
+                <TwitterLink
+                    href="https://twitter.com/memetic_insti2t"
+                    icon={faTwitter}
+                    title="Twitter"
+                />
+                <ExternalLink
+                    href="https://github.com/memetic-institute"
+                    icon={faGithub}
+                    title="GitHub"
+                />
             </Item>
         </List>
     </Container>

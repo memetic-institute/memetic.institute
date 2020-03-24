@@ -3,6 +3,7 @@ import Head from 'next/head';
 import { createGlobalStyle, ThemeProvider } from 'styled-components';
 import 'focus-visible';
 import 'typeface-d-din';
+import '@fortawesome/fontawesome-svg-core/styles.css';
 import Layout from '../components/Layout';
 
 const title = 'Institute for Memetic Research & Development';
@@ -106,7 +107,7 @@ class App extends NextApp {
                     />
                     <meta property="og:image:alt" content={title} />
                     {/* Favicons */}
-                    {[16, 32].map(size => {
+                    {[16, 32].map((size) => {
                         const dimensions = `${size}x${size}`;
                         return (
                             <link
