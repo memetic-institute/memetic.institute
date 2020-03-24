@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import YouTubePlayer from 'react-player/lib/players/YouTube';
+import Title from '../../components/Title';
 import {
     Article,
     Container,
@@ -21,6 +22,7 @@ const ResponsivePlayer = styled(YouTubePlayer)`
 
 const Wut = () => (
     <>
+        <Title title="What We Do" />
         <FeatureBanner
             heading="What We Do"
             image={{ src: require('./pyramid.png'), alt: 'Pyramid' }}
@@ -34,6 +36,12 @@ const Wut = () => (
                     of objectives in the meme space, from memetic strategy to
                     meme design, operations, intelligence, and advocacy.
                 </Lead>
+                <p>
+                    Evolutionary biologist Richard Dawkins developed the term
+                    &quot;memetics&quot; in his 1976 book{' '}
+                    <i>The Selfish Gene</i> as an insight into how ideas affect
+                    and propagate through culture.
+                </p>
                 <PlayerWrapper>
                     <ResponsivePlayer
                         url="https://www.youtube.com/watch?v=4BVpEoQ4T2M"

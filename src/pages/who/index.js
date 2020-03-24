@@ -2,7 +2,12 @@ import { string, shape, node } from 'prop-types';
 import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 // import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
-import { faTwitter, faFacebook, faGithub } from '@fortawesome/free-brands-svg-icons';
+import {
+    faTwitter,
+    faFacebook,
+    faGithub
+} from '@fortawesome/free-brands-svg-icons';
+import Title from '../../components/Title';
 import {
     Article,
     Container,
@@ -31,6 +36,7 @@ ExternalLink.propTypes = {
 
 const Who = () => (
     <>
+    <Title title="Who We Are" />
         <FeatureBanner
             heading="Who We Are"
             image={{ src: require('./npc.svg'), alt: 'NPC' }}
@@ -52,12 +58,6 @@ const Who = () => (
             <aside>
                 <h2>Stay In Touch</h2>
                 <Lead>
-                    {/*
-                    <ExternalLink href={`mailto:${email}`} icon={faEnvelope}>
-                        {email}
-                    </ExternalLink>
-                    <br />
-                    */}
                     <ExternalLink
                         href="https://twitter.com/memetic_insti2t"
                         icon={faTwitter}
@@ -71,6 +71,12 @@ const Who = () => (
                     >
                         Facebook
                     </ExternalLink>
+                    {/*
+                    <ExternalLink href={`mailto:${email}`} icon={faEnvelope}>
+                        {email}
+                    </ExternalLink>
+                    <br />
+                    */}
                 </Lead>
                 <h2>Open Source</h2>
                 <Lead>

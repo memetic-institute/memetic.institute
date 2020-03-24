@@ -1,20 +1,16 @@
-import styled from 'styled-components';
+import { string } from 'prop-types';
+import Head from 'next/head';
 
-const Title = styled.h1`
-    margin: 0 0 0.5rem 0;
-    line-height: 1.15;
-    font-size: 6rem;
-    text-align: left;
-    -webkit-text-stroke: 1px #fff;
+export const defaultTitle = 'Institute for Memetic Research & Development';
 
-    @media only screen and (max-width: 1000px) and (max-height: 1000px) {
-        font-size: 5rem;
-    }
+const Title = ({ title }) => (
+    <Head>
+        <title>{`${title} » ${defaultTitle}`}</title>
+    </Head>
+);
 
-    @media only screen and (max-width: 800px) {
-        font-size: 4rem;
-        max-width: 350px;
-    }
-`;
+Title.propTypes = {
+    title: string.isRequired
+};
 
 export default Title;

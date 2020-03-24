@@ -27,7 +27,7 @@ const Feature = styled.div`
     &::before {
         content: '';
         display: block;
-        background: #fff;
+        background: #FFF;
         height: 100%;
         width: 150%;
         margin: 0;

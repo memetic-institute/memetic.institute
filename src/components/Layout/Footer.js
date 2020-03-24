@@ -6,6 +6,7 @@ import {
     faGithub
 } from '@fortawesome/free-brands-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { defaultTitle as title } from '../Title';
 
 const Container = styled.footer`
     width: 100%;
@@ -82,8 +83,7 @@ const Footer = (props) => (
     <Container {...props}>
         <List>
             <Item>
-                &copy; {new Date().getFullYear()} Institute for Memetic Research
-                & Development
+                &copy; {new Date().getFullYear()} {title}
             </Item>
             <Item>
                 <TwitterLink

@@ -5,8 +5,8 @@ import 'focus-visible';
 import 'typeface-d-din';
 import '@fortawesome/fontawesome-svg-core/styles.css';
 import Layout from '../components/Layout';
+import { defaultTitle as title } from '../components/Title';
 
-const title = 'Institute for Memetic Research & Development';
 const description = 'Better memes for a brighter tomorrow';
 const url = 'https://memetic.institute';
 const brandColor = '#498200';
@@ -106,6 +106,9 @@ class App extends NextApp {
                         content={`${url}/open-graph.png`}
                     />
                     <meta property="og:image:alt" content={title} />
+                    {/* Twitter */}
+                    <meta name="twitter:card" content="summary" />
+                    <meta name="twitter:site" content="memetic_insti2t" />
                     {/* Favicons */}
                     {[16, 32].map((size) => {
                         const dimensions = `${size}x${size}`;

@@ -6,6 +6,7 @@ const Container = styled.section`
     padding: 3em 1em;
     display: flex;
     flex-direction: row;
+    position: relative;
 
     @media screen and (max-width: 800px) {
         padding: 2em 1em;

@@ -1,6 +1,7 @@
 import { string, shape } from 'prop-types';
 import styled from 'styled-components';
 import QRCode from 'qrcode.react';
+import Title from '../../components/Title';
 import {
     Banner,
     Container,
@@ -87,6 +88,7 @@ CryptoQR.defaultProps = {
 
 const Gib = () => (
     <>
+        <Title title="Support" />
         <FeatureBanner
             heading="Gibs Money"
             image={{ src: require('./wojak.png'), alt: 'Pink Wojak' }}

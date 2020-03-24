@@ -1,35 +1,36 @@
 import { arrayOf, shape } from 'prop-types';
 import styled from 'styled-components';
 import ogs from 'open-graph-scraper';
-import { Banner, Container, Tagline } from '../../components/Layout';
+import { Banner, Container, Lead, Tagline } from '../../components/Layout';
 
-const HaroldBlur = styled.div`
-    background: ${require('./harold.jpg?lqip-colors')[0]}
-        url(${require('./harold.jpg')}) 10% 15% / 110% no-repeat;
-    filter: blur(15px);
-    width: 110%;
-    height: 110%;
-    position: absolute;
-    z-index: 1;
-`;
-
-const HaroldContainer = styled(Container)`
-    background: url(${require('./harold.jpg')}) 10% 5% / 110% no-repeat;
-    padding: 5em 1em;
+const MainBanner = styled(Banner)`
+    background: ${({ theme }) => theme.colors.primary};
     position: relative;
-    z-index: 2;
+
+    height: 300px;
 
     @media screen and (max-width: 800px) {
-        padding: 4em 1em;
+        height: 250px;
     }
 
     @media screen and (max-width: 700px) {
-        padding: 2em 1em;
+        height: 200px;
     }
+`;
 
-    @media screen and (max-width: 450px) {
-        padding: 2em 1em;
-    }
+const MainBannerContainer = styled(Container)`
+    align-items: center;
+`;
+
+const Harold = styled.div`
+    background: url(${require('./harold.jpg')}) 10% 5% / 110% no-repeat;
+    height: 100%;
+    width: 100%;
+    clip-path: polygon(15% 0%, 100% 0%, 85% 100%, 0% 100%);
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
 `;
 
 const RSpace = styled.span`
@@ -38,12 +39,13 @@ const RSpace = styled.span`
     }
 `;
 
-const HaroldTagline = styled(Tagline)`
+const MainTagline = styled(Tagline)`
     background: ${({ theme }) => theme.colors.primary};
     color: #fff;
     font-size: 3em;
-    margin: 10px 0;
+    height: fit-content;
     width: fit-content;
+    z-index: 2;
 
     br {
         display: none;
@@ -140,9 +142,10 @@ const ProjectImage = styled.img`
 
 const Home = ({ projects }) => (
     <>
-        <Banner>
-            <HaroldContainer>
-                <HaroldTagline>
+        <MainBanner>
+            <MainBannerContainer>
+                <Harold />
+                <MainTagline>
                     <div>
                         Better memes
                         <br />
@@ -155,12 +158,15 @@ const Home = ({ projects }) => (
                         <RSpace>&nbsp;</RSpace>
                         tomorrow
                     </div>
-                </HaroldTagline>
-            </HaroldContainer>
-            <HaroldBlur />
-        </Banner>
+                </MainTagline>
+            </MainBannerContainer>
+        </MainBanner>
         <MainContainer>
-            <Subheading>Latest Projects</Subheading>
+            <Lead>
+                We are IMRD, the leading experts in memeology and applied
+                memetics.
+            </Lead>
+            <Subheading>Projects</Subheading>
             <Projects>
                 {projects.map(({ ogUrl, ogTitle, ogDescription, ogImage }) => (
                     <Project
@@ -192,7 +198,7 @@ Home.defaultProps = {
 export const getStaticProps = async () => {
     const projectURLs = ['https://brrr.money', 'https://thefed.app'];
     const projects = await Promise.all(
-        projectURLs.map(async url => {
+        projectURLs.map(async (url) => {
             try {
                 const openGraph = await ogs({ url });
                 return openGraph.data;
