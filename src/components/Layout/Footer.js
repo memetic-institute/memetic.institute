@@ -1,6 +1,10 @@
 import { shape } from 'prop-types';
 import styled from 'styled-components';
-import { faTwitter, faGithub } from '@fortawesome/free-brands-svg-icons';
+import {
+    faTwitter,
+    faFacebook,
+    faGithub
+} from '@fortawesome/free-brands-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const Container = styled.footer`
@@ -70,6 +74,10 @@ const TwitterLink = styled(ExternalLink)`
     color: #1da1f2;
 `;
 
+const FacebookLink = styled(ExternalLink)`
+    color: #4267b2;
+`;
+
 const Footer = (props) => (
     <Container {...props}>
         <List>
@@ -82,6 +90,11 @@ const Footer = (props) => (
                     href="https://twitter.com/memetic_insti2t"
                     icon={faTwitter}
                     title="Twitter"
+                />
+                <FacebookLink
+                    href="https://fb.me/institute.for.memetic.research.and.development"
+                    icon={faFacebook}
+                    title="Facebook"
                 />
                 <ExternalLink
                     href="https://github.com/memetic-institute"

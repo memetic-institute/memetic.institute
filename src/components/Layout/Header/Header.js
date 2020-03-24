@@ -104,7 +104,7 @@ NavLink.propTypes = {
 const navLinks = [
     { href: '/wut', label: 'What We Do' },
     { href: '/who', label: 'Who We Are' },
-    { href: '/gib', label: 'Donate' }
+    { href: '/gib', label: 'Support' }
 ];
 
 const browserWidth = () =>

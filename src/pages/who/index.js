@@ -1,8 +1,8 @@
 import { string, shape, node } from 'prop-types';
 import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
-import { faTwitter, faGithub } from '@fortawesome/free-brands-svg-icons';
+// import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
+import { faTwitter, faFacebook, faGithub } from '@fortawesome/free-brands-svg-icons';
 import {
     Article,
     Container,
@@ -10,7 +10,7 @@ import {
     Lead
 } from '../../components/Layout';
 
-const email = 'hi@memetic.institute';
+// const email = 'hi@memetic.institute';
 
 const ContactIcon = styled(FontAwesomeIcon)`
     margin-right: 0.25em;
@@ -50,17 +50,26 @@ const Who = () => (
                 </Lead>
             </Article>
             <aside>
-                <h2>Contact Us</h2>
+                <h2>Stay In Touch</h2>
                 <Lead>
+                    {/*
                     <ExternalLink href={`mailto:${email}`} icon={faEnvelope}>
                         {email}
                     </ExternalLink>
                     <br />
+                    */}
                     <ExternalLink
                         href="https://twitter.com/memetic_insti2t"
                         icon={faTwitter}
                     >
-                        @memetic_insti2t
+                        Twitter
+                    </ExternalLink>
+                    <br />
+                    <ExternalLink
+                        href="https://fb.me/institute.for.memetic.research.and.development"
+                        icon={faFacebook}
+                    >
+                        Facebook
                     </ExternalLink>
                 </Lead>
                 <h2>Open Source</h2>
@@ -69,7 +78,7 @@ const Who = () => (
                         href="https://github.com/memetic-institute"
                         icon={faGithub}
                     >
-                        @memetic-institute
+                        GitHub
                     </ExternalLink>
                 </Lead>
             </aside>
