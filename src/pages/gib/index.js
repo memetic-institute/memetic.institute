@@ -253,8 +253,7 @@ const Gib = () => {
             <Container>
                 <section>
                     <Lead>
-                        <b>{description}</b>
-                        &nbsp; In the coming weeks we will be launching Patreon
+                        In the coming weeks we will be launching Patreon
                         membership with access to early releases, exclusive
                         content, and commissioned memes.
                         <PatreonButton
