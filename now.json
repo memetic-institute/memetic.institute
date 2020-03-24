@@ -1,7 +1,6 @@
 {
     "version": 2,
     "scope": "imrd",
-    "alias": ["memetic.institute", "memetics.institute", "memeticinstitute.com", "memeinstitute.com", "memeinstitute.org"],
     "cleanUrls": true,
     "trailingSlash": false,
     "public": false
