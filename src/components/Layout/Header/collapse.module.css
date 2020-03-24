@@ -1,0 +1,4 @@
+.collapseContainer {
+    transition: all 0.2s linear;
+    align-self: center;
+}

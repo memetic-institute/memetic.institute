@@ -1,0 +1,26 @@
+{
+    "name": "Institute for Memetic Research & Development",
+    "short_name": "IMRD",
+    "description": "Better memes for a brighter tomorrow",
+    "start_url": "/",
+    "display": "minimal-ui",
+    "theme_color": "#498200",
+    "background_color": "#FFFFFF",
+    "icons": [
+        {
+            "src": "/icons/favicon.ico",
+            "sizes": "64x64 32x32 24x24 16x16",
+            "type": "image/x-icon"
+        },
+        {
+            "src": "/icons/android-chrome-192x192.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "/icons/android-chrome-512x512.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        }
+    ]
+}
