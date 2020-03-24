@@ -1,14 +1,17 @@
+import { func, shape } from 'prop-types';
 import NextApp from 'next/app';
 import Head from 'next/head';
+import { withRouter } from 'next/router';
+import { DefaultSeo, LogoJsonLd } from 'next-seo';
 import { createGlobalStyle, ThemeProvider } from 'styled-components';
 import 'focus-visible';
 import 'typeface-d-din';
 import '@fortawesome/fontawesome-svg-core/styles.css';
 import Layout from '../components/Layout';
-import { defaultTitle as title } from '../components/Title';
 
+const title = 'Institute for Memetic Research & Development';
 const description = 'Better memes for a brighter tomorrow';
-const url = 'https://memetic.institute';
+const baseUrl = 'https://memetic.institute';
 const brandColor = '#498200';
 
 const theme = {
@@ -50,12 +53,13 @@ const GlobalStyle = createGlobalStyle`
     a {
         color: ${theme.colors.primary};
         text-decoration: none;
-
+        
         &:hover {
             text-decoration: underline;
 
             &::before {
                 content: '>';
+                background: #FFF;
                 font-weight: bold;
                 display: inline-block;
                 position: absolute;
@@ -76,39 +80,44 @@ const GlobalStyle = createGlobalStyle`
         margin: 0;
         text-transform: uppercase;
     }
+
+    button {
+        font-size: 1em;
+    }
 `;
 
 class App extends NextApp {
     render() {
-        const { Component, pageProps } = this.props;
+        const { Component, pageProps, router } = this.props;
+        const url = `${baseUrl}${router.pathname}`;
         return (
             <>
+                <DefaultSeo
+                    title={title}
+                    titleTemplate={router.pathname !== '/' && `%s | ${title}`}
+                    description={description}
+                    canonical={url}
+                    openGraph={{
+                        title,
+                        site_name: title,
+                        description,
+                        url,
+                        type: 'website',
+                        images: [
+                            {
+                                url: `${baseUrl}/open-graph.png`,
+                                width: 1200,
+                                height: 1200,
+                                alt: title
+                            }
+                        ]
+                    }}
+                    twitter={{
+                        site: '@memetic_insti2t',
+                        cardType: 'summary_large_image'
+                    }}
+                />
                 <Head>
-                    <title>{title}</title>
-                    <meta charSet="utf-8" />
-                    <meta name="application-name" content={title} />
-                    <meta name="description" content={description} />
-                    <link rel="canonical" href={url} />
-                    <meta
-                        name="viewport"
-                        content="width=device-width, initial-scale=1"
-                    />
-                    {/* Open Graph */}
-                    <meta property="og:type" content="website" />
-                    <meta property="og:title" content={title} />
-                    <meta property="og:site_name" content={title} />
-                    <meta property="og:description" content={description} />
-                    <meta property="og:url" content={url} />
-                    <meta property="og:image:width" content="1200" />
-                    <meta property="og:image:height" content="630" />
-                    <meta
-                        property="og:image"
-                        content={`${url}/open-graph.png`}
-                    />
-                    <meta property="og:image:alt" content={title} />
-                    {/* Twitter */}
-                    <meta name="twitter:card" content="summary" />
-                    <meta name="twitter:site" content="memetic_insti2t" />
                     {/* Favicons */}
                     {[16, 32].map((size) => {
                         const dimensions = `${size}x${size}`;
@@ -122,8 +131,7 @@ class App extends NextApp {
                             />
                         );
                     })}
-                    {/* Safari */}
-                    <meta name="apple-mobile-web-app-title" content="IMRD" />
+                    {/* Platform-specific metadata */}
                     <link
                         rel="apple-touch-icon"
                         sizes="300x300"
@@ -134,15 +142,15 @@ class App extends NextApp {
                         href="/icons/safari-pinned-tab.svg"
                         color={brandColor}
                     />
-                    {/* Windows */}
                     <meta
                         name="msapplication-config"
-                        content="/browserconfig..xml"
+                        content="/browserconfig.xml"
                     />
+                    <meta name="apple-mobile-web-app-title" content="IMRD" />
                     {/* PWA manifest */}
                     <link rel="manifest" href="/site.webmanifest" />
-                    <meta name="theme-color" content={brandColor} />
                 </Head>
+                <LogoJsonLd logo={`${baseUrl}/logo.png`} url={baseUrl} />
                 <ThemeProvider theme={theme}>
                     <GlobalStyle />
                     <Layout>
@@ -154,4 +162,10 @@ class App extends NextApp {
     }
 }
 
-export default App;
+App.propTypes = {
+    Component: func.isRequired,
+    pageProps: shape({}).isRequired,
+    router: shape({}).isRequired
+};
+
+export default withRouter(App);

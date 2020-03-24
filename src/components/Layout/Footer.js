@@ -3,10 +3,16 @@ import styled from 'styled-components';
 import {
     faTwitter,
     faFacebook,
+    faPatreon,
     faGithub
 } from '@fortawesome/free-brands-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { defaultTitle as title } from '../Title';
+import {
+    twitterUrl,
+    facebookPageUrl,
+    patreonUrl,
+    githubUrl
+} from '../../lib/socialProfiles';
 
 const Container = styled.footer`
     width: 100%;
@@ -21,7 +27,7 @@ const Container = styled.footer`
     align-items: center;
     z-index: 3;
 
-    @media only screen and (max-width: 800px) {
+    @media only screen and (max-width: 700px) {
         height: 100px;
     }
 `;
@@ -35,7 +41,7 @@ const List = styled.ul`
     align-items: center;
     justify-content: space-between;
 
-    @media only screen and (max-width: 800px) {
+    @media only screen and (max-width: 700px) {
         justify-content: center;
         flex-direction: column;
     }
@@ -44,10 +50,16 @@ const List = styled.ul`
 const Item = styled.li`
     display: inline-block;
     margin: 0 1em;
+    width: 100%;
 
-    @media only screen and (max-width: 800px) {
+    &:last-of-type {
+        text-align: right;
+    }
+
+    @media only screen and (max-width: 700px) {
         display: block;
         margin: 0.25em;
+        text-align: center !important;
     }
 `;
 
@@ -56,7 +68,7 @@ const Link = styled.a`
     font-size: 1.5em;
     margin-left: 1em;
 
-    @media only screen and (max-width: 800px) {
+    @media only screen and (max-width: 700px) {
         margin: 0 1em;
     }
 `;
@@ -72,35 +84,41 @@ ExternalLink.propTypes = {
 };
 
 const TwitterLink = styled(ExternalLink)`
-    color: #1da1f2;
+    color: #1DA1F2;
 `;
 
 const FacebookLink = styled(ExternalLink)`
-    color: #4267b2;
+    color: #4267B2;
+`;
+
+const PatreonLink = styled(ExternalLink)`
+    color: #F96854;
 `;
 
 const Footer = (props) => (
     <Container {...props}>
         <List>
             <Item>
-                &copy; {new Date().getFullYear()} {title}
+                &copy; {new Date().getFullYear()} Institute for Memetic Research
+                & Development
             </Item>
             <Item>
                 <TwitterLink
-                    href="https://twitter.com/memetic_insti2t"
+                    href={twitterUrl}
                     icon={faTwitter}
                     title="Twitter"
                 />
                 <FacebookLink
-                    href="https://fb.me/institute.for.memetic.research.and.development"
+                    href={facebookPageUrl}
                     icon={faFacebook}
                     title="Facebook"
                 />
-                <ExternalLink
-                    href="https://github.com/memetic-institute"
-                    icon={faGithub}
-                    title="GitHub"
+                <PatreonLink
+                    href={patreonUrl}
+                    icon={faPatreon}
+                    title="Patreon"
                 />
+                <ExternalLink href={githubUrl} icon={faGithub} title="GitHub" />
             </Item>
         </List>
     </Container>

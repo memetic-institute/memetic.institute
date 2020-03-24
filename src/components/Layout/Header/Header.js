@@ -20,9 +20,10 @@ const Navbar = styled.nav`
     line-height: 1;
     display: flex;
     align-items: flex-start;
+    justify-content: space-between;
 
-    @media screen and (min-width: 700px) {
-        justify-content: space-between;
+    @media screen and (max-width: 700px) {
+        flex-wrap: wrap;
     }
 `;
 
@@ -39,9 +40,11 @@ const Links = styled.ul`
     margin: 0;
     padding: 0;
     display: flex;
+    position: relative;
 
     @media screen and (max-width: 700px) {
         flex-direction: column;
+        padding-top: 1em;
     }
 `;
 
@@ -85,18 +88,19 @@ const Logo = styled.img`
     margin-right: 1em;
 `;
 
-const NavLink = ({ children, href, ...props }) => {
+const NavItem = ({ children, href, ...props }) => {
     const router = useRouter();
+    const active = router.pathname === href;
     return (
-        <Link href={href} passHref>
-            <Anchor active={router.pathname === href} {...props}>
-                {children}
-            </Anchor>
-        </Link>
+        <Item active={active} {...props}>
+            <Link href={href} passHref>
+                <Anchor active={active}>{children}</Anchor>
+            </Link>
+        </Item>
     );
 };
 
-NavLink.propTypes = {
+NavItem.propTypes = {
     children: node.isRequired,
     href: string.isRequired
 };
@@ -108,15 +112,13 @@ const navLinks = [
 ];
 
 const browserWidth = () =>
-    typeof window === 'undefined'
-        ? 1200
-        : Math.max(
-              document.body.scrollWidth,
-              document.documentElement.scrollWidth,
-              document.body.offsetWidth,
-              document.documentElement.offsetWidth,
-              document.documentElement.clientWidth
-          );
+    Math.max(
+        document.body.scrollWidth,
+        document.documentElement.scrollWidth,
+        document.body.offsetWidth,
+        document.documentElement.offsetWidth,
+        document.documentElement.clientWidth
+    );
 
 const isDesktop = () => Boolean(browserWidth() > 700);
 
@@ -138,14 +140,7 @@ const ToggleButton = styled.button`
     padding: 0;
     position: relative;
     top: 13px;
-    transition: top 0.15s ease;
     cursor: pointer;
-
-    ${({ open }) =>
-        open &&
-        css`
-            top: 0px;
-        `}
 
     @media screen and (min-width: 700px) {
         display: none;
@@ -214,14 +209,15 @@ const ToggleButtonInner = styled.span`
         `}
 `;
 
-const Header = props => {
-    const [navOpen, setNavOpen] = useState(isDesktop());
+const Header = (props) => {
+    const [navOpen, setNavOpen] = useState(true);
 
     const setNavByWidth = () => setNavOpen(isDesktop());
-    const toggleNav = () => setNavOpen(prev => !prev);
+    const toggleNav = () => setNavOpen((prev) => !prev);
     const collapseNavIfMobile = () => !isDesktop() && setNavOpen(false);
 
     useEffect(() => {
+        if (!isDesktop()) setNavOpen(false);
         window.addEventListener('resize', setNavByWidth);
         return () => window.removeEventListener('resize', setNavByWidth);
     }, []);
@@ -237,30 +233,27 @@ const Header = props => {
                         />
                     </LogoAnchor>
                 </Link>
-                <Collapse
-                    isOpened={navOpen}
-                    theme={{ collapse: collapseStyles.collapseContainer }}
-                >
-                    {navOpen && (
-                        <Links>
-                            {navLinks.map(({ href, label }) => (
-                                <Item key={href}>
-                                    <NavLink
-                                        href={href}
-                                        onClick={collapseNavIfMobile}
-                                    >
-                                        {label}
-                                    </NavLink>
-                                </Item>
-                            ))}
-                        </Links>
-                    )}
-                </Collapse>
                 <ToggleButton type="button" onClick={toggleNav} open={navOpen}>
                     <ToggleButtonBox>
                         <ToggleButtonInner open={navOpen} />
                     </ToggleButtonBox>
                 </ToggleButton>
+                <Collapse
+                    isOpened={navOpen}
+                    theme={{ collapse: collapseStyles.collapseContainer }}
+                >
+                    <Links>
+                        {navLinks.map(({ href, label }) => (
+                            <NavItem
+                                key={href}
+                                href={href}
+                                onClick={collapseNavIfMobile}
+                            >
+                                {label}
+                            </NavItem>
+                        ))}
+                    </Links>
+                </Collapse>
             </Navbar>
         </Container>
     );

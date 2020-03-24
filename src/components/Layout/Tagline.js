@@ -7,12 +7,8 @@ const Tagline = styled.h1`
     margin: 0;
     line-height: 1em;
 
-    @media screen and (max-width: 900px) {
-        font-size: 4em;
-    }
-
     @media screen and (max-width: 800px) {
-        font-size: 3em;
+        font-size: 3.5em;
     }
 `;
 

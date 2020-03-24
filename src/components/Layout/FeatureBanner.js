@@ -17,46 +17,33 @@ const FeatureTagline = styled(Tagline)`
 
 const Feature = styled.div`
     align-self: flex-end;
-    position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
+    position: relative;
     height: 300px;
-    width: 200px;
+    width: 400px;
+    clip-path: polygon(20% 0%, 100% 0%, 80% 100%, 0% 100%);
+    background: #FFF;
 
-    &::before {
-        content: '';
-        display: block;
-        background: #FFF;
-        height: 100%;
-        width: 150%;
-        margin: 0;
-        position: absolute;
-        top: 0em;
-        right: 27%;
-        transform: skew(-20deg);
-    }
-
-    > * {
-        position: relative;
-        right: 53%;
-        z-index: 2;
-    }
-
-    @media screen and (max-width: 800px) {
+    @media screen and (max-width: 1000px) {
         order: -1;
-        align-self: flex-start;
-        justify-content: start;
-
-        &::before {
-            right: initial;
-            left: -72.5%;
-        }
+        width: 250px;
+        clip-path: polygon(0% 0%, 100% 0%, 80% 100%, 0% 100%);
+        right: initial;
+        left: -1em;
 
         > * {
-            position: static;
-            right: initial;
             max-height: 150px;
+            margin-left: -10%;
+        }
+    }
+
+    @media screen and (max-width: 600px) {
+        width: 175px;
+
+        > * {
+            max-height: 100px;
         }
     }
 `;

@@ -1,6 +1,6 @@
+import { NextSeo } from 'next-seo';
 import styled from 'styled-components';
 import YouTubePlayer from 'react-player/lib/players/YouTube';
-import Title from '../../components/Title';
 import {
     Article,
     Container,
@@ -9,6 +9,9 @@ import {
     List,
     ListItem
 } from '../../components/Layout';
+
+const title = 'What We Do';
+const description = 'Building the memes of your dreams.';
 
 const PlayerWrapper = styled.div`
     position: relative;
@@ -22,19 +25,26 @@ const ResponsivePlayer = styled(YouTubePlayer)`
 
 const Wut = () => (
     <>
-        <Title title="What We Do" />
+        <NextSeo
+            title={title}
+            description={description}
+            openGraph={{
+                title,
+                description
+            }}
+        />
         <FeatureBanner
-            heading="What We Do"
+            heading={title}
             image={{ src: require('./pyramid.png'), alt: 'Pyramid' }}
         />
         <Container>
             <Article>
                 <Lead>
-                    <b>Building the memes of your dreams.</b> IMRD&apos;s
-                    memological research and meme application teams innovate the
-                    future of advanced memetics. We specialize in a broad range
-                    of objectives in the meme space, from memetic strategy to
-                    meme design, operations, intelligence, and advocacy.
+                    <b>{description}</b> IMRD&apos;s memological research and
+                    meme application teams innovate the future of advanced
+                    memetics. We specialize in a broad range of objectives in
+                    the meme space, from memetic strategy to meme design,
+                    operations, intelligence, and advocacy.
                 </Lead>
                 <p>
                     Evolutionary biologist Richard Dawkins developed the term

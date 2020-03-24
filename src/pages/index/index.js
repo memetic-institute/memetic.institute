@@ -1,7 +1,10 @@
 import { arrayOf, shape } from 'prop-types';
+import Link from 'next/link';
 import styled from 'styled-components';
 import ogs from 'open-graph-scraper';
 import { Banner, Container, Lead, Tagline } from '../../components/Layout';
+import ProjectGrid from '../../components/ProjectGrid';
+import fetchProjects from '../../lib/fetchProjects';
 
 const MainBanner = styled(Banner)`
     background: ${({ theme }) => theme.colors.primary};
@@ -25,12 +28,18 @@ const MainBannerContainer = styled(Container)`
 const Harold = styled.div`
     background: url(${require('./harold.jpg')}) 10% 5% / 110% no-repeat;
     height: 100%;
-    width: 100%;
-    clip-path: polygon(15% 0%, 100% 0%, 85% 100%, 0% 100%);
+    width: calc(100% - 2em);
+    clip-path: polygon(8.25% 0%, 100% 0%, 91.75% 100%, 0% 100%);
     position: absolute;
     top: 0;
-    left: 0;
+    left: 1em;
     z-index: 1;
+
+    @media screen and (max-width: 600px) {
+        width: 100%;
+        clip-path: initial;
+        left: 0;
+    }
 `;
 
 const RSpace = styled.span`
@@ -60,10 +69,11 @@ const MainTagline = styled(Tagline)`
     }
 
     @media screen and (max-width: 800px) {
-        font-size: 2em;
+        font-size: 2.5em;
     }
 
     @media screen and (max-width: 700px) {
+        font-size: 2em;
         br {
             display: block;
         }
@@ -85,59 +95,6 @@ const MainContainer = styled(Container)`
 const Subheading = styled.h2`
     font-size: 2em;
     margin-bottom: 0.5em;
-`;
-
-const Projects = styled.section`
-    display: flex;
-
-    @media screen and (max-width: 600px) {
-        flex-wrap: wrap;
-    }
-`;
-
-const Project = styled.a`
-    width: 100%;
-    margin-bottom: 1em;
-
-    &:hover {
-        &::before {
-            content: '';
-        }
-
-        img {
-            transform: scale(1.05);
-            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.25);
-            z-index: 1000;
-        }
-
-        h3::before {
-            content: '>';
-            font-weight: bold;
-            display: inline-block;
-            position: absolute;
-            margin-left: -0.6em;
-        }
-    }
-`;
-
-const ProjectTitle = styled.h3`
-    font-size: 1.5em;
-`;
-
-const ProjectImageWrapper = styled.div`
-    position: relative;
-    padding-top: 50%;
-    margin-bottom: 0.5em;
-`;
-
-const ProjectImage = styled.img`
-    margin: 0;
-    position: absolute;
-    top: 0;
-    height: 100%;
-    width: 100%;
-    background: ${({ theme }) => theme.colors.primary};
-    transition: all 0.15s ease;
 `;
 
 const Home = ({ projects }) => (
@@ -163,29 +120,24 @@ const Home = ({ projects }) => (
         </MainBanner>
         <MainContainer>
             <Lead>
-                We are IMRD, the leading experts in memeology and applied
-                memetics.
+                <b>We are IMRD</b>, the leading experts in memeology and applied
+                memetics.{' '}
+                <Link href="/projects">
+                    <a>Our memes</a>
+                </Link>{' '}
+                make the world turn. See our latest developments, or{' '}
+                <Link href="/who">
+                    <a>follow us</a>
+                </Link>
+                .
             </Lead>
             <Subheading>Projects</Subheading>
-            <Projects>
-                {projects.map(({ ogUrl, ogTitle, ogDescription, ogImage }) => (
-                    <Project
-                        key={ogUrl}
-                        href={ogUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                    >
-                        <ProjectImageWrapper>
-                            <ProjectImage src={ogImage.url} />
-                        </ProjectImageWrapper>
-                        <ProjectTitle>{ogTitle}</ProjectTitle>
-                        <span>{ogDescription}</span>
-                    </Project>
-                ))}
-            </Projects>
+            <ProjectGrid projects={projects} />
         </MainContainer>
     </>
 );
+
+export const getStaticProps = fetchProjects(ogs);
 
 Home.propTypes = {
     projects: arrayOf(shape({}))
@@ -193,25 +145,6 @@ Home.propTypes = {
 
 Home.defaultProps = {
     projects: []
-};
-
-export const getStaticProps = async () => {
-    const projectURLs = ['https://brrr.money', 'https://thefed.app'];
-    const projects = await Promise.all(
-        projectURLs.map(async (url) => {
-            try {
-                const openGraph = await ogs({ url });
-                return openGraph.data;
-            } catch (error) {
-                console.error(
-                    `Failed to fetch Open Graph metadata for ${url}:`,
-                    error
-                );
-                return {};
-            }
-        })
-    );
-    return { props: { projects } };
 };
 
 export default Home;

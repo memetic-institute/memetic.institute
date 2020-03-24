@@ -3,7 +3,7 @@ import { node } from 'prop-types';
 import styled from 'styled-components';
 import Header from './Header';
 import Footer from './Footer';
-import { initGA, logPageView } from '../../util/analytics';
+import { initGA, logPageView } from '../../lib/analytics';
 
 const PageContainer = styled.div`
     min-height: 100vh;
