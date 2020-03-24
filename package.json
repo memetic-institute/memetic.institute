@@ -206,8 +206,7 @@
         "react-dom": "16.13.1",
         "react-ga": "^2.7.0",
         "react-player": "^1.15.2",
-        "styled-components": "^5.0.1",
-        "typeface-d-din": "^0.0.67"
+        "styled-components": "^5.0.1"
     },
     "devDependencies": {
         "@next/bundle-analyzer": "^9.3.1",

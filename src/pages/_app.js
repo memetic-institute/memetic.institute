@@ -5,7 +5,7 @@ import { withRouter } from 'next/router';
 import { DefaultSeo, LogoJsonLd } from 'next-seo';
 import { createGlobalStyle, ThemeProvider } from 'styled-components';
 import 'focus-visible';
-import 'typeface-d-din';
+import '../font.css';
 import '@fortawesome/fontawesome-svg-core/styles.css';
 import Layout from '../components/Layout';
 

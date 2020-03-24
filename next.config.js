@@ -9,7 +9,7 @@ const plugins = [withFonts, withOptimizedImages, withBundleAnalyzer];
 
 const nextConfig = {
     // next-optimized-images
-    optimizeImagesInDev: true,
+    optimizeImagesInDev: true
 
     // webpack(config, options) {
     //     return config;
