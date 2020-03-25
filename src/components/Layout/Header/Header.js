@@ -15,14 +15,13 @@ const Container = styled.header`
 
 const Navbar = styled.nav`
     width: 100%;
-    max-width: 1000px;
-    padding: 1em;
+    padding: 2em;
     line-height: 1;
     display: flex;
     align-items: flex-start;
     justify-content: space-between;
 
-    @media screen and (max-width: 700px) {
+    @media screen and (max-width: 800px) {
         flex-wrap: wrap;
     }
 `;
@@ -42,7 +41,7 @@ const Links = styled.ul`
     display: flex;
     position: relative;
 
-    @media screen and (max-width: 700px) {
+    @media screen and (max-width: 800px) {
         flex-direction: column;
         padding-top: 1em;
     }
@@ -51,7 +50,7 @@ const Links = styled.ul`
 const Item = styled.li`
     padding-left: 1.5em;
 
-    @media screen and (max-width: 700px) {
+    @media screen and (max-width: 800px) {
         padding-left: 0;
 
         &:not(:last-of-type) {
@@ -108,7 +107,7 @@ NavItem.propTypes = {
 const navLinks = [
     { href: '/wut', label: 'What We Do' },
     { href: '/who', label: 'Who We Are' },
-    { href: '/gib', label: 'Support' }
+    { href: '/gib', label: 'Support Us' }
 ];
 
 const browserWidth = () =>
@@ -120,7 +119,7 @@ const browserWidth = () =>
         document.documentElement.clientWidth
     );
 
-const isDesktop = () => Boolean(browserWidth() > 700);
+const isDesktop = () => Boolean(browserWidth() > 800);
 
 /*!
  * btnCollapses
@@ -142,7 +141,7 @@ const ToggleButton = styled.button`
     top: 13px;
     cursor: pointer;
 
-    @media screen and (min-width: 700px) {
+    @media screen and (min-width: 800px) {
         display: none;
     }
 `;

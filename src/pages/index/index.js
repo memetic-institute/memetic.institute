@@ -7,32 +7,30 @@ import ProjectGrid from '../../components/ProjectGrid';
 import fetchProjects from '../../lib/fetchProjects';
 
 const MainBanner = styled(Banner)`
-    background: ${({ theme }) => theme.colors.primary};
-    position: relative;
-
-    height: 300px;
-
-    @media screen and (max-width: 800px) {
-        height: 250px;
-    }
+    padding: 30% 2rem 0 2rem;
+    height: 0;
 
     @media screen and (max-width: 700px) {
-        height: 200px;
+        padding-top: 50%;
     }
 `;
 
 const MainBannerContainer = styled(Container)`
+    height: 100%;
+    position: absolute;
+    top: 0;
     align-items: center;
+    z-index: 2;
 `;
 
 const Harold = styled.div`
-    background: url(${require('./harold.jpg')}) 10% 5% / 110% no-repeat;
+    background: url(${require('./harold.jpg')}) 10% 0% / 110% no-repeat;
+    width: calc(100% - 4em);
     height: 100%;
-    width: calc(100% - 2em);
     clip-path: polygon(8.25% 0%, 100% 0%, 91.75% 100%, 0% 100%);
     position: absolute;
     top: 0;
-    left: 1em;
+    left: 2em;
     z-index: 1;
 
     @media screen and (max-width: 600px) {
@@ -51,7 +49,7 @@ const RSpace = styled.span`
 const MainTagline = styled(Tagline)`
     background: ${({ theme }) => theme.colors.primary};
     color: #fff;
-    font-size: 3em;
+    font-size: 6em;
     height: fit-content;
     width: fit-content;
     z-index: 2;
@@ -64,27 +62,47 @@ const MainTagline = styled(Tagline)`
         }
     }
 
-    @media screen and (max-width: 1000px) {
-        font-size: 2.75em;
+    @media screen and (max-width: 2000px) {
+        font-size: 5em;
     }
 
-    @media screen and (max-width: 800px) {
-        font-size: 2.5em;
+    @media screen and (max-width: 1600px) {
+        font-size: 4em;
+    }
+
+    @media screen and (max-width: 1300px) {
+        font-size: 3.5em;
+    }
+
+    @media screen and (max-width: 1200px) {
+        font-size: 3em;
+    }
+
+    @media screen and (max-width: 1000px) {
+        font-size: 2.25em;
     }
 
     @media screen and (max-width: 700px) {
-        font-size: 2em;
+        font-size: 2.5em;
         br {
             display: block;
         }
     }
 
-    @media screen and (max-width: 450px) {
+    @media screen and (max-width: 600px) {
+        font-size: 2em;
+    }
+
+    @media screen and (max-width: 500px) {
         font-size: 1.75em;
     }
 
-    @media screen and (max-width: 385px) {
+    @media screen and (max-width: 400px) {
         font-size: 1.5em;
+    }
+
+    @media screen and (max-width: 350px) {
+        font-size: 1.25em;
     }
 `;
 
@@ -99,9 +117,9 @@ const Subheading = styled.h2`
 
 const Home = ({ projects }) => (
     <>
-        <MainBanner>
+        <MainBanner primary>
+            <Harold />
             <MainBannerContainer>
-                <Harold />
                 <MainTagline>
                     <div>
                         Better memes

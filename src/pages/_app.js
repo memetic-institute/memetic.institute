@@ -5,7 +5,6 @@ import { withRouter } from 'next/router';
 import { DefaultSeo, LogoJsonLd } from 'next-seo';
 import { createGlobalStyle, ThemeProvider } from 'styled-components';
 import 'focus-visible';
-import '../font.css';
 import '@fortawesome/fontawesome-svg-core/styles.css';
 import Layout from '../components/Layout';
 
@@ -17,11 +16,49 @@ const brandColor = '#498200';
 const theme = {
     colors: {
         primary: brandColor,
-        text: '#222'
+        text: '#222',
+        twitter: '#1DA1F2',
+        facebook: '#4267B2',
+        discord: '#7289DA',
+        patreon: '#f96854',
+        brave: '#fb542b'
     }
 };
 
 const GlobalStyle = createGlobalStyle`
+    /* d-din-400normal - latin */
+    @font-face {
+        font-family: 'D-DIN';
+        font-style: normal;
+        font-display: swap;
+        font-weight: 400;
+        src: local('D-DIN Regular normal'), local('D-DIN-Regularnormal'),
+            url('/fonts/d-din-400.woff2') format('woff2'),
+            url('/fonts/d-din-400.woff') format('woff');
+    }
+
+    /* d-din-400italic - latin */
+    @font-face {
+        font-family: 'D-DIN';
+        font-style: italic;
+        font-display: swap;
+        font-weight: 400;
+        src: local('D-DIN Regular italic'), local('D-DIN-Regularitalic'),
+            url('/fonts/d-din-400italic.woff2') format('woff2'),
+            url('/fonts/d-din-400italic.woff') format('woff');
+    }
+
+    /* d-din-700normal - latin */
+    @font-face {
+        font-family: 'D-DIN';
+        font-style: normal;
+        font-display: swap;
+        font-weight: 700;
+        src: local('D-DIN Bold normal'), local('D-DIN-Boldnormal'),
+            url('/fonts/d-din-700.woff2') format('woff2'),
+            url('/fonts/d-din-700.woff') format('woff');
+    }
+
     html,
     body {
         padding: 0;
@@ -30,6 +67,7 @@ const GlobalStyle = createGlobalStyle`
             Oxygen, Ubuntu, Cantarell, 'Fira Sans', 'Droid Sans',
             'Helvetica Neue', sans-serif;
         color: ${theme.colors.text};
+        -webkit-tap-highlight-color: ${theme.colors.primary};
     }
 
     * {

@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import YouTubePlayer from 'react-player/lib/players/YouTube';
 import {
     Article,
+    Aside,
     Container,
     FeatureBanner,
     Lead,
@@ -64,7 +65,7 @@ const Wut = () => (
                     />
                 </PlayerWrapper>
             </Article>
-            <aside>
+            <Aside>
                 <h2>Our Work</h2>
                 <List>
                     <ListItem>Research in Emerging Memology</ListItem>
@@ -81,7 +82,7 @@ const Wut = () => (
                     <ListItem>Meme Policy Development & Advocacy</ListItem>
                     <ListItem>Memological Training</ListItem>
                 </List>
-            </aside>
+            </Aside>
         </Container>
     </>
 );

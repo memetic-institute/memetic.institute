@@ -1,10 +1,10 @@
 .collapseContainer {
-    transition: all 0.2s ease;
     align-self: center;
 }
 
-@media screen and (max-width: 700px) {
+@media screen and (max-width: 800px) {
     .collapseContainer {
+        transition: all 0.2s ease;
         flex-basis: 100%;
     }
 }

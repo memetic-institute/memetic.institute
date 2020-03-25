@@ -1,9 +1,10 @@
 import styled from 'styled-components';
 
 const Article = styled.article`
-    max-width: 600px;
-    padding-right: 1em;
+    padding-right: 2em;
     margin-bottom: 2em;
+    flex: 1;
+    flex-basis: 100%;
 
     @media screen and (max-width: 800px) {
         max-width: initial;

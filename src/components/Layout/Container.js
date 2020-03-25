@@ -2,8 +2,7 @@ import styled from 'styled-components';
 
 const Container = styled.section`
     width: 100%;
-    max-width: 1000px;
-    padding: 3em 1em;
+    padding: 2em;
     display: flex;
     flex-direction: row;
     position: relative;

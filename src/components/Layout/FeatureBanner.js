@@ -5,8 +5,7 @@ import Tagline from './Tagline';
 
 const Container = styled.section`
     width: 100%;
-    max-width: 1000px;
-    padding: 0 1em;
+    padding: 0 2em;
     display: flex;
     align-items: center;
 `;
@@ -26,12 +25,16 @@ const Feature = styled.div`
     clip-path: polygon(20% 0%, 100% 0%, 80% 100%, 0% 100%);
     background: #FFF;
 
+    > * {
+        margin-left: -5%;
+    }
+
     @media screen and (max-width: 1000px) {
         order: -1;
         width: 250px;
         clip-path: polygon(0% 0%, 100% 0%, 80% 100%, 0% 100%);
         right: initial;
-        left: -1em;
+        left: -2em;
 
         > * {
             max-height: 150px;
