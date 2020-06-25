@@ -36,7 +36,7 @@ const Who = () => (
         <Container>
             <Article>
                 <Lead>
-                    <b>{description}</b> We&apos;re an elite team of autists
+                    <b>{description}</b> We&apos;re an elite team of memetic engineers
                     harnessing decades of collective experience in memological
                     research and applied memetics. Our passion for memes led us
                     to establish IMRD with the goal of furthering memology and
