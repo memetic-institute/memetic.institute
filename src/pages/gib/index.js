@@ -19,7 +19,6 @@ import {
     FeatureBanner,
     Lead
 } from '../../components/Layout';
-import { PatreonButton } from '../../components/SocialButtons';
 
 const title = 'Support Us';
 const description = 'Your generous gift of shitcoins fuels our mission.';
@@ -236,14 +235,6 @@ const Gib = () => {
                     </CryptoRow>
                 </Article>
                 <Aside>
-                    <h2>Patreon</h2>
-                    <p>
-                        In the coming weeks we will be launching Patreon
-                        membership with access to early releases, exclusive
-                        content, and commissioned memes.
-                    </p>
-                    <PatreonButton />
-                    <br />
                     <h2>Brave</h2>
                     <p>
                         You can also support us by trying Brave Browser and
