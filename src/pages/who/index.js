@@ -11,7 +11,6 @@ import {
     TwitterButton,
     FacebookButton,
     DiscordButton,
-    PatreonButton,
     GitHubButton
 } from '../../components/SocialButtons';
 
@@ -48,7 +47,6 @@ const Who = () => (
                 <TwitterButton />
                 <FacebookButton />
                 <DiscordButton />
-                <PatreonButton />
                 {/*
                     <ButtonAnchor href={`mailto:${email}`} icon={faEnvelope}>
                         {email}
