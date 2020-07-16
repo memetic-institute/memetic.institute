@@ -10,7 +10,6 @@ import {
 import {
     TwitterButton,
     FacebookButton,
-    DiscordButton,
     GitHubButton
 } from '../../components/SocialButtons';
 
@@ -46,7 +45,6 @@ const Who = () => (
                 <h2>Stay In Touch</h2>
                 <TwitterButton />
                 <FacebookButton />
-                <DiscordButton />
                 {/*
                     <ButtonAnchor href={`mailto:${email}`} icon={faEnvelope}>
                         {email}
