@@ -19,8 +19,6 @@ const theme = {
         text: '#222',
         twitter: '#1DA1F2',
         facebook: '#4267B2',
-        discord: '#7289DA',
-        patreon: '#f96854',
         brave: '#fb542b'
     }
 };
