@@ -2,8 +2,6 @@ import styled from 'styled-components';
 import {
     TwitterLink,
     FacebookLink,
-    DiscordLink,
-    PatreonLink,
     GitHubLink
 } from '../SocialButtons';
 
@@ -61,8 +59,6 @@ const Footer = (props) => (
             <Item>
                 <TwitterLink />
                 <FacebookLink />
-                <DiscordLink />
-                <PatreonLink />
                 <GitHubLink />
             </Item>
         </List>
