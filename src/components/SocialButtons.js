@@ -4,16 +4,12 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
     faTwitter,
     faFacebook,
-    faDiscord,
-    faPatreon,
     faGithub
 } from '@fortawesome/free-brands-svg-icons';
 import ButtonAnchor from './Layout/ButtonAnchor';
 import {
     twitterUrl,
     facebookPageUrl,
-    discordUrl,
-    patreonUrl,
     githubUrl
 } from '../lib/socialProfiles';
 
@@ -41,24 +37,12 @@ const StyledTwitterLink = styled(ExternalLink)`
 const StyledFacebookLink = styled(ExternalLink)`
     color: ${({ theme }) => theme.colors.facebook};
 `;
-const StyledDiscordLink = styled(ExternalLink)`
-    color: ${({ theme }) => theme.colors.discord};
-`;
-const StyledPatreonLink = styled(ExternalLink)`
-    color: ${({ theme }) => theme.colors.patreon};
-`;
 
 const StyledTwitterButton = styled(ButtonAnchor)`
     background: ${({ theme }) => theme.colors.twitter} !important;
 `;
 const StyledFacebookButton = styled(ButtonAnchor)`
     background: ${({ theme }) => theme.colors.facebook} !important;
-`;
-const StyledDiscordButton = styled(ButtonAnchor)`
-    background: ${({ theme }) => theme.colors.discord} !important;
-`;
-const StyledPatreonButton = styled(ButtonAnchor)`
-    background: ${({ theme }) => theme.colors.patreon} !important;
 `;
 const StyledGitHubButton = styled(ButtonAnchor)`
     background: #000 !important;
@@ -80,22 +64,6 @@ export const FacebookLink = (props) => (
         {...props}
     />
 );
-export const DiscordLink = (props) => (
-    <StyledDiscordLink
-        href={discordUrl}
-        icon={faDiscord}
-        title="Discord"
-        {...props}
-    />
-);
-export const PatreonLink = (props) => (
-    <StyledPatreonLink
-        href={patreonUrl}
-        icon={faPatreon}
-        title="Patreon"
-        {...props}
-    />
-);
 export const GitHubLink = (props) => (
     <ExternalLink href={githubUrl} icon={faGithub} title="GitHub" {...props} />
 );
@@ -109,16 +77,6 @@ export const FacebookButton = () => (
     <StyledFacebookButton href={facebookPageUrl} icon={faFacebook} large>
         Facebook
     </StyledFacebookButton>
-);
-export const DiscordButton = () => (
-    <StyledDiscordButton href={discordUrl} icon={faDiscord} large>
-        Discord
-    </StyledDiscordButton>
-);
-export const PatreonButton = () => (
-    <StyledPatreonButton href={patreonUrl} icon={faPatreon} large>
-        Become a Patron
-    </StyledPatreonButton>
 );
 export const GitHubButton = () => (
     <StyledGitHubButton href={githubUrl} icon={faGithub} large>
